@@ -1,8 +1,8 @@
 # Banking-Project
-- Client 
+- Client <br>
   npm run
   
-- Server
-  dotnet ef migrations {migration_name}
-  dotnet ef database update
+- Server <br>
+  dotnet ef migrations {migration_name} <br>
+  dotnet ef database update <br>
   dotnet run
