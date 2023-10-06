@@ -1,0 +1,75 @@
+@model client.Models.TransaksiModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<h4>Transaksi</h4>
+<br/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @* <div class="form-group">
+                    <label asp-for="AccountId" class="control-label"></label>
+                    <input asp-for="AccountId" class="form-control">
+                    <span asp-validation-for="AccountId" class="text-danger"></span>
+                </div> *@
+            <div class="form-group">
+                <label asp-for="AccountId" class="control-label"></label>
+                <select asp-for="AccountId" class="form-select" asp-items="ViewBag.Nasabah"></select>
+                <span asp-validation-for="AccountId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionDate" class="control-label"></label>
+                <input asp-for="TransactionDate" class="form-control" id="datepicker" value="@DateTime.Now.ToString("Y-m-d H:m:s")">
+                <span asp-validation-for="TransactionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <select asp-for="Description" class="form-select">
+                    <option value="">--Select One--</option>
+                    <option value="Bayar Listrik">Bayar Listrik</option>
+                    <option value="Beli Pulsa">Beli Pulsa</option>
+                    <option value="Setor Tunai">Setor Tunai</option>
+                    <option value="Tarik Tunai">Tarik Tunai</option>
+                </select>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DebitCreditStatus" class="control-label"></label>
+                <select asp-for="DebitCreditStatus" class="form-select">
+                    <option value="">--Select One--</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                <span asp-validation-for="DebitCreditStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control">
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_validationScriptsPartial");}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        @* $(function () {
+            $("#datepicker").datepicker();
+        }); *@
+    </script>
+}
